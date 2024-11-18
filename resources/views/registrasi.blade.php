@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Akun</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
 </head>
 <body class="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
-    <div class="w-full max-w-md p-8 space-y-6 bg-gray-800 rounded-lg shadow-lg">
-        <div class="flex justify-center">
-            <img src="images/icon.png" alt="Logo" class="w-40 h-40">
-        </div>
+<div class="w-full max-w-md px-20 space-y-6 rounded-lg shadow-lg " 
+     style="background: linear-gradient(to bottom, #040E32 , #267A9E);">
+        <div class="flex justify-center mb-6 md:mb-8 lg:mb-10">
+            <!-- Logo atau ikon di bagian atas form -->
+            <img src="{{ asset('img/logo.png') }}" alt="Logo" class="w-16 md:w-32 lg:w-48">
+            </div>
 
         <h2 class="text-3xl font-bold text-center">DAFTAR</h2>s
 
@@ -18,6 +21,7 @@
             <div>
                 <label for="username" class="sr-only">Nama Pengguna</label>
                 <input id="username" type="text" name="username" placeholder="Nama Pengguna" required 
+                       pattern="[A-Za-z0-9_]{5,20}" 
                        aria-label="Nama Pengguna"
                        class="w-full px-4 py-2 text-gray-900 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
@@ -27,9 +31,9 @@
                 <select id="status" name="status" required 
                         aria-label="Status Pengguna"
                         class="w-full px-4 py-2 text-gray-900 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="" disabled selected>Status Pengguna</option>
-                    <option value="User">mahasiswa</option>
-                    <option value="Admin">pegawai</option>
+                        <option value="" disabled selected>Status Pengguna</option>
+                        <option value="Mahasiswa">Mahasiswa</option>
+                    <option value="Pegawai">Pegawai</option>
                 </select>
             </div>
 
@@ -55,9 +59,10 @@
             </div>
         </form>
 
-        <div class="text-center text-sm text-gray-400">
-            Sudah memiliki akun? 
-            <a href="{{ route('login') }}" class="font-semibold text-blue-400 hover:underline">MASUK</a>
+        <!-- Link ke halaman login -->
+        <div class="text-center text-sm text-white-400">
+    Sudah memiliki akun? 
+    <a href="{{ route('login') }}" class="font-semibold hover:underline" style="color: #0000CD;">MASUK</a>
         </div>
     </div>
 </body>
