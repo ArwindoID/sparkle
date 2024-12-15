@@ -5,19 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Akun</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Memuat Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script>
+        // Fungsi togglePassword untuk menampilkan atau menyembunyikan kata sandi
+        function togglePassword() {
+            var passwordInput = document.getElementById('password');
+            var eyeIcon = document.getElementById('togglePasswordIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
 
+        function togglePasswordConfirmation() {
+            var passwordConfirmationInput = document.getElementById('password_confirmation');
+            var eyeIconConfirmation = document.getElementById('togglePasswordConfirmationIcon');
+            
+            if (passwordConfirmationInput.type === 'password') {
+                passwordConfirmationInput.type = 'text';
+                eyeIconConfirmation.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordConfirmationInput.type = 'password';
+                eyeIconConfirmation.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+    </script>
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
-<div class="w-full max-w-md px-20 space-y-6 rounded-lg shadow-lg " 
+<body class="flex items-center justify-center min-h-screen" style="background: linear-gradient(to bottom, #040e32 0%, #267a9e 100%); text-white">
+    <div class="w-full max-w-md px-20 space-y-6 rounded-lg shadow-lg " 
      style="background: linear-gradient(to bottom, #040E32 , #267A9E);">
         <div class="flex justify-center mb-6 md:mb-8 lg:mb-10">
-            <!-- Logo atau ikon di bagian atas form -->
             <img src="{{ asset('img/logo.png') }}" alt="Logo" class="w-16 md:w-32 lg:w-48">
-            </div>
+        </div>
 
-        <h2 class="text-3xl font-bold text-center">DAFTAR</h2>s
+        <h2 class="text-3xl font-bold text-center">DAFTAR</h2>
 
         <form class="space-y-4" action="#" method="POST">
+        @csrf
             <div>
                 <label for="username" class="sr-only">Nama Pengguna</label>
                 <input id="username" type="text" name="username" placeholder="Nama Pengguna" required 
@@ -37,18 +66,20 @@
                 </select>
             </div>
 
-            <div>
+            <div class="relative">
                 <label for="password" class="sr-only">Kata Sandi</label>
                 <input id="password" type="password" name="password" placeholder="Kata Sandi" required 
                        aria-label="Kata Sandi"
                        class="w-full px-4 py-2 text-gray-900 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <i id="togglePasswordIcon" class="fa fa-eye absolute right-4 top-3 cursor-pointer" onclick="togglePassword()"></i>
             </div>
 
-            <div>
+            <div class="relative">
                 <label for="password_confirmation" class="sr-only">Konfirmasi Kata Sandi</label>
                 <input id="password_confirmation" type="password" name="password_confirmation" placeholder="Konfirmasi Kata Sandi" required 
                        aria-label="Konfirmasi Kata Sandi"
                        class="w-full px-4 py-2 text-gray-900 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <i id="togglePasswordConfirmationIcon" class="fa fa-eye absolute right-4 top-3 cursor-pointer" onclick="togglePasswordConfirmation()"></i>
             </div>
 
             <div>
@@ -59,10 +90,9 @@
             </div>
         </form>
 
-        <!-- Link ke halaman login -->
         <div class="text-center text-sm text-white-400">
-    Sudah memiliki akun? 
-    <a href="{{ route('login') }}" class="font-semibold hover:underline" style="color: #0000CD;">MASUK</a>
+            Sudah memiliki akun? 
+            <a href="{{ route('login') }}" class="font-semibold hover:underline" style="color: #0000CD;">MASUK</a>
         </div>
     </div>
 </body>
