@@ -14,12 +14,12 @@
                 <div>
                     <label for="username" class="sr-only">Nama Pengguna</label>
                     <input id="username" type="text" name="username" placeholder="Nama Pengguna" required
-                        class="w-full px-4 py-3 text-gray-200 placeholder-gray-500 bg-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 md:text-lg">
+                        class="w-full px-4 py-3 text-black placeholder-gray-500 bg-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 md:text-lg">
                 </div>
                 <div class="relative">
                     <label for="password" class="sr-only">Kata Sandi</label>
                     <input id="password" type="password" name="password" placeholder="Kata Sandi" required
-                        class="w-full px-4 py-3 text-gray-200 placeholder-gray-500 bg-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 md:text-lg">
+                        class="w-full px-4 py-3 text-black placeholder-gray-500 bg-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 md:text-lg">
                     <span class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
                         onclick="togglePassword()">
                         <svg id="eye" class="w-6 h-6 text-black md:w-7 md:h-7 hover:text-blue-500" fill="none"
