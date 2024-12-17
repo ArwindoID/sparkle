@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User; // Hubungkan dengan model User
 
-class LoginController extends Controller
+class loginController extends Controller
 {
     // Menampilkan halaman login
     public function index()
