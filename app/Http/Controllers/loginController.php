@@ -29,21 +29,19 @@ class loginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            if (Auth::user()->role === 'mahasiswa') {
-                return redirect()->route('dashboard')->with('success', 'Login berhasil');
-            } else {
-                return redirect()->route('dashboard')->with('success', 'Login berhasil');
-            }
+            return redirect()->route('dashboard')->with('success', 'Login berhasil');
         } else {
             return redirect()->back()->withErrors(['error' => 'Email atau password salah.'])->withInput();
         }
     }
 
     // Proses logout
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
-        return redirect('/login')->with('success', 'Anda telah keluar.');
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+        return redirect()->route('login')->with('succes', 'Logout Berhasil');
     }
 }
