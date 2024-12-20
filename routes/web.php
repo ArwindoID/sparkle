@@ -6,15 +6,21 @@ use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ZoneController;
 
-// Autentikasi
-Route::get('/', [loginController::class, 'index'])->name('login'); // Menampilkan halaman login
-Route::post('/login_proses', [loginController::class, 'login_proses'])->name('login_proses'); // Memproses login (gunakan POST)
-Route::post('/logout', [loginController::class, 'logout'])->name('logout'); // Logout (gunakan POST)
-Route::get('/registrasi', [registrasiController::class, 'index'])->name('registrasi');
-Route::post('/registrasi-proses', [registrasiController::class, 'registrasi_proses'])->name('registrasi.proses');
+// Route untuk autentikasi
+Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::post('/login_proses', [LoginController::class, 'login_proses'])->name('login_proses');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/registrasi', [RegistrasiController::class, 'index'])->name('registrasi');
+Route::post('/registrasi-proses', [RegistrasiController::class, 'registrasi_proses'])->name('registrasi.proses');
 
-// Dashboard
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/zone/{id}', [ZoneController::class, 'show'])->name('zone.show');
+    Route::get('/zona1', [ZoneController::class, 'zona1'])->name('zona.zona1');
+    Route::get('/zona2', [ZoneController::class, 'zona2'])->name('zona.zona2');
+    Route::get('/zona3', [ZoneController::class, 'zona3'])->name('zona.zona3');
+    Route::get('/zona4', [ZoneController::class, 'zona4'])->name('zona.zona4');
+    Route::get('/zona5', [ZoneController::class, 'zona5'])->name('zona.zona5');
+    Route::get('/zona6', [ZoneController::class, 'zona6'])->name('zona.zona6');
+});
 

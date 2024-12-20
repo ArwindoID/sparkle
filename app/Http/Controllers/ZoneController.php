@@ -7,34 +7,33 @@ use Illuminate\Support\Facades\View;
 
 class ZoneController extends Controller
 {
-    /**
-     * Display the dashboard with the map.
-     */
-    public function dashboard()
+    public function zona1()
     {
-        return view('dashboard');
+        return view('Zona.zona1');
     }
 
-    /**
-     * Display the details of a specific zone.
-     *
-     * @param int $id
-     */
-    public function show($id)
-{
-    // Validasi zona (opsional)
-    if (!in_array($id, [1, 2, 3, 4, 5, 6])) {
-        abort(404, 'Zona tidak ditemukan');
+    public function zona2()
+    {
+        return view('Zona.zona2');
     }
 
-    // Tentukan path gambar berdasarkan zona
-    $imagePath = "/images/zona{$id}.jpg";
+    public function zona3()
+    {
+        return view('Zona.zona3');
+    }
 
-    // Kirim data ke view
-    return view('zone', [
-        'zoneId' => $id,
-        'imagePath' => $imagePath,
-    ]);
-}
+    public function zona4()
+    {
+        return view('Zona.zona4');
+    }
 
+    public function zona5()
+    {
+        return view('Zona.zona5');
+    }
+
+    public function zona6()
+    {
+        return view('Zona.zona6');
+    }
 }
