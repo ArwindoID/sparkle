@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ZoneController;
+use App\Http\Middleware\EnsureTokenIsValid;
 
 // Route untuk autentikasi
 Route::get('/', [LoginController::class, 'index'])->name('login');
@@ -23,4 +24,3 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/zona5', [ZoneController::class, 'zona5'])->name('zona.zona5');
     Route::get('/zona6', [ZoneController::class, 'zona6'])->name('zona.zona6');
 });
-
