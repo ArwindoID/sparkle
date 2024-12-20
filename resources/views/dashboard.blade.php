@@ -31,7 +31,7 @@
 
 
         <div id="mapContainer" class="relative overflow-hidden w-full h-[calc(100vh-4rem)]">
-            <img id="mapImage" src="{{ asset('images/mapview1.png') }}" usemap="#ParkingMap"
+            <img id="mapImage" src="{{ asset('images/mapview.png') }}" usemap="#ParkingMap"
                 class="absolute top-0 left-0 block object-cover w-full h-full md:w-full md:h-full" style="min-width: 1200px;">
             <!-- Map Area -->
             <map name="ParkingMap">

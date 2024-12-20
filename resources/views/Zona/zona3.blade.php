@@ -3,7 +3,7 @@
 @section('content')
 <div class="overflow-scroll" style="width: 100vw; height: 100vh;">
     <img
-        src="{{ asset('images/zona3.jpg') }}"
+        src="{{ asset('images/zona3.png') }}"
         alt="Background"
         class="block"
         style="width: 150%; height: 150%;"
