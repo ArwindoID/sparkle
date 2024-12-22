@@ -23,4 +23,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/zona4', [ZoneController::class, 'zona4'])->name('zona.zona4');
     Route::get('/zona5', [ZoneController::class, 'zona5'])->name('zona.zona5');
     Route::get('/zona6', [ZoneController::class, 'zona6'])->name('zona.zona6');
+
+    Route::get('/zona{id}', [ZoneController::class, 'show'])->name('zona.show');
 });

@@ -70,18 +70,17 @@
                 style="min-width: 1200px;">
             <!-- Map Area -->
             <map name="ParkingMap">
-                <area target="" alt="" title="" href="{{ route('zona.zona1') }}"
-                coords="211,484,214,434,517,422,571,449,562,597,504,606,504,621,482,625,461,647,442,649,318,554,329,532,313,516,311,480,295,474,269,474,264,487" shape="poly">
-                <area target="" alt="" title="" href="{{ route('zona.zona2') }}"
-                coords="593,648,1052,410" shape="rect">
-                <area target="" alt="" title="" href="{{ route('zona.zona3') }}"
-                coords="63,57,137,57,132,391,63,394" shape="poly">
-                <area target="" alt="" title="" href="{{ route('zona.zona4') }}"
-                coords="181,369,175,237,340,257,414,365,421,398,201,394" shape="poly">
-                <area target="" alt="" title="" href="{{ route('zona.zona5') }}"
-                coords="900,391,850,174,1103,221,1121,373" shape="poly">
-                <area target="" alt="" title="" href="{{ route('zona.zona6') }}"
-                coords="1271,149,1128,360" shape="rect">
+                <map name="ParkingMap">
+                    @foreach ($zonaParkir as $zona)
+                    <area
+                    target=""
+                    alt="{{ $zona->nama_zona }}"
+                    title="{{ $zona->nama_zona }}"
+                    href="{{ route('zona.show', ['id' => $zona->id]) }}"
+                    coords="{{ $zona->coords }}"
+                    shape="{{ $zona->shape }}">
+                    @endforeach
+                </map>
             </map>
         </div>
     </div>

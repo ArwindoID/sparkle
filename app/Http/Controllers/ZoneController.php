@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use App\Models\ZonaParkir;
 
 class ZoneController extends Controller
 {
@@ -35,5 +36,12 @@ class ZoneController extends Controller
     public function zona6()
     {
         return view('Zona.zona6');
+    }
+
+    public function show($id)
+    {
+        $zona = ZonaParkir::findOrFail($id);
+
+        return view('zona.show', compact('zona'));
     }
 }
