@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,15 +12,12 @@ return new class extends Migration
     {
         Schema::create('baris_parkir', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('baris_id');
+            $table->unsignedBigInteger('zona_id');
             $table->integer('nomor_slot');
             $table->enum('keterangan', ['Terisi', 'Kosong'])->default('Kosong');
             $table->timestamps();
 
-            $table->foreign('baris_id')
-                  ->references('id')
-                  ->on('zona_parkir')
-                  ->onDelete('cascade');
+            $table->foreign('zona_id')->references('id')->on('zona_parkir')->onDelete('cascade');
         });
 
     }

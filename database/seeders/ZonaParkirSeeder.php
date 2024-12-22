@@ -53,6 +53,14 @@ class ZonaParkirSeeder extends Seeder
                     'coords' => [900, 391, 850, 174, 1103, 221, 1121, 373],
                 ]),
             ],
+            [
+                'nama_zona' => 'Zona 6',
+                'keterangan' => 'Area tambahan',
+                'koordinat' => json_encode([
+                    'shape' => 'poly',
+                    'coords' => [211, 484, 214, 434, 517, 422],
+                ]),
+            ],
         ]);
     }
 }
