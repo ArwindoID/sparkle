@@ -14,6 +14,9 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                customBlue: '#000046', // Menambahkan warna kustom
+            },
         },
     },
     plugins: [],

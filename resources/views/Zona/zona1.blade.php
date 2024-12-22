@@ -6,7 +6,7 @@
         src="{{ asset('images/zona1.png') }}"
         alt="Background"
         class="block"
-        style="width: 150%; height: 150%;"
+        style="width: 150%; height: 100%;"
     >
     <!-- Tombol Kembali -->
     <div class="absolute top-4 left-4">

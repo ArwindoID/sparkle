@@ -1,12 +1,12 @@
 @extends('layout.main')
 
 @section('content')
-<div class="overflow-scroll" style="width: 100vw; height: 100vh;">
+<div class="overflow-scroll bg-black" style="width: 100vw; height: 100vh;">
     <img
         src="{{ asset('images/zona5.png') }}"
         alt="Background"
         class="block"
-        style="width: 150%; height: 150%;"
+        style="width: 150%; height: 100%;"
     >
     <!-- Tombol Kembali -->
     <div class="absolute top-4 left-4">
