@@ -17,26 +17,56 @@
     </div>
 
     @php
-        // Posisi koordinat untuk masing-masing slot parkir
         $slotPositions = [
-            ['top' => '73%', 'left' => '5%'], // Slot 1
-            ['top' => '73%', 'left' => '8.5%'], // Slot 2
-            ['top' => '73%', 'left' => '12%'], // Slot 3
-            ['top' => '73%', 'left' => '15.5%'], // Slot 4
+            ['top' => '73%', 'left' => '6%'], // Slot 1
+            ['top' => '73%', 'left' => '9.5%'], // Slot 2
+            ['top' => '73%', 'left' => '13%'], // Slot 3
+            ['top' => '73%', 'left' => '16.5%'], // Slot 4
         ];
     @endphp
 
-    <!-- Render mobil jika keterangan = "Terisi" -->
-    @foreach ($slots as $index => $slot)
-        @if ($slot->keterangan === 'Terisi')
-            <div style="position: absolute; top: {{ $slotPositions[$index]['top'] }}; left: {{ $slotPositions[$index]['left'] }};">
-                <img
-                    src="{{ asset('images/mobil.png') }}"
-                    alt="Mobil"
-                    style="width: 80px; height: 80px;"
-                >
-            </div>
-        @endif
-    @endforeach
+    <div id="parking-slots">
+    </div>
 </div>
+
+<!-- Tambahkan jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Fungsi untuk memperbarui slot parkir
+        function updateParkingSlots() {
+            $.ajax({
+                url: "{{ route('get.slot.parkir') }}",
+                method: 'GET',
+                success: function (data) {
+                    // Hapus konten sebelumnya
+                    $('#parking-slots').empty();
+
+                    // Posisi koordinat slot parkir
+                    let slotPositions = @json($slotPositions);
+
+                    // Render ulang slot berdasarkan data
+                    data.forEach(function (slot, index) {
+                        if (slot.keterangan === 'Terisi') {
+                            $('#parking-slots').append(`
+                                <div style="position: absolute; top: ${slotPositions[index].top}; left: ${slotPositions[index].left};">
+                                    <img src="{{ asset('images/mobil.png') }}" alt="Mobil" style="width: 50px; height: 80px;">
+                                </div>
+                            `);
+                        }
+                    });
+                },
+                error: function () {
+                    console.error('Gagal memperbarui slot parkir.');
+                }
+            });
+        }
+
+        // Perbarui setiap 2 detik
+        setInterval(updateParkingSlots, 2000);
+
+        // Panggil fungsi pertama kali saat halaman dimuat
+        updateParkingSlots();
+    });
+</script>
 @endsection
