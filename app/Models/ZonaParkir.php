@@ -16,4 +16,9 @@ class ZonaParkir extends Model
         'keterangan',
         'koordinat',
     ];
+
+    public function barisParkir()
+    {
+        return $this->hasMany(BarisParkir::class, 'zona_id');
+    }
 }

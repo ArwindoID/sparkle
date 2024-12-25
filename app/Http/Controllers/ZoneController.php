@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BarisParkir;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Models\ZonaParkir;
@@ -35,7 +36,8 @@ class ZoneController extends Controller
 
     public function zona6()
     {
-        return view('Zona.zona6');
+        $slots = BarisParkir::all();
+        return view('Zona.zona6', compact('slots'));
     }
 
     public function show($id)

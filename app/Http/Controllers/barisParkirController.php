@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\BarisParkir; // Model untuk tabel baris_parkir
+use App\Models\BarisParkir; 
 
 class barisParkirController extends Controller
 {

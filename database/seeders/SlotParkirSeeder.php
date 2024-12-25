@@ -17,8 +17,6 @@ class SlotParkirSeeder extends Seeder
             ['zona_id' => 6, 'nomor_slot' => 2, 'keterangan' => 'Kosong', 'created_at' => now(), 'updated_at' => now()],
             ['zona_id' => 6, 'nomor_slot' => 3, 'keterangan' => 'Terisi', 'created_at' => now(), 'updated_at' => now()],
             ['zona_id' => 6, 'nomor_slot' => 4, 'keterangan' => 'Kosong', 'created_at' => now(), 'updated_at' => now()],
-            ['zona_id' => 6, 'nomor_slot' => 5, 'keterangan' => 'Kosong', 'created_at' => now(), 'updated_at' => now()],
-            ['zona_id' => 6, 'nomor_slot' => 6, 'keterangan' => 'Terisi', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }

@@ -19,12 +19,10 @@
     @php
         // Posisi koordinat untuk masing-masing slot parkir
         $slotPositions = [
-            ['top' => '85%', 'left' => '25%'], // Slot 1
-            ['top' => '85%', 'left' => '35%'], // Slot 2
-            ['top' => '85%', 'left' => '45%'], // Slot 3
-            ['top' => '85%', 'left' => '55%'], // Slot 4
-            ['top' => '85%', 'left' => '65%'], // Slot 5
-            ['top' => '85%', 'left' => '75%'], // Slot 6
+            ['top' => '73%', 'left' => '5%'], // Slot 1
+            ['top' => '73%', 'left' => '8.5%'], // Slot 2
+            ['top' => '73%', 'left' => '12%'], // Slot 3
+            ['top' => '73%', 'left' => '15.5%'], // Slot 4
         ];
     @endphp
 
@@ -35,7 +33,7 @@
                 <img
                     src="{{ asset('images/mobil.png') }}"
                     alt="Mobil"
-                    style="width: 50px; height: 50px;"
+                    style="width: 80px; height: 80px;"
                 >
             </div>
         @endif
