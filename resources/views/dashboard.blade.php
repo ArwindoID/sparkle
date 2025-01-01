@@ -130,11 +130,11 @@
 
                 <!-- Modal -->
                 <div id="modal-zona-{{ $index + 1 }}" tabindex="-1"
-                    class="fixed top-0 left-0 right-0 z-50 hidden w-full h-full p-4 overflow-x-hidden overflow-y-auto bg-black bg-opacity-50">
-                    <div class="relative w-full max-w-md m-auto bg-white rounded-lg shadow-lg">
+                    class="fixed inset-0 z-50 flex items-center justify-center hidden w-full h-full p-4 bg-black bg-opacity-50">
+                    <div class="relative w-full max-w-md bg-white rounded-lg shadow-lg">
                         <!-- Header -->
                         <div class="p-4 border-b">
-                            <h3 class="text-lg text-black font-semibol">Konfirmasi Masuk Zona {{ $index + 1 }}</h3>
+                            <h3 class="text-lg font-semibold text-black">Konfirmasi Masuk Zona {{ $index + 1 }}</h3>
                         </div>
                         <!-- Body -->
                         <div class="p-4 text-gray-500">
@@ -142,7 +142,7 @@
                         </div>
                         <!-- Footer -->
                         <div class="flex items-center justify-end gap-2 p-4 border-t">
-                            <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 cancel-zona">Batal</button>
+                            <button class="px-4 py-2 bg-gray-500 rounded hover:bg-gray-300 cancel-zona">Batal</button>
                             <a href="{{ route('zona.show', $index + 1) }}"
                                 class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">Setuju</a>
                         </div>
@@ -193,73 +193,73 @@
         }
     </style>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-    // Logout Modal
-    const logoutButton = document.getElementById('logoutButton');
-    const logoutModal = document.getElementById('popup-modal');
-    const cancelLogoutButton = document.getElementById('cancelLogout');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Logout Modal
+            const logoutButton = document.getElementById('logoutButton');
+            const logoutModal = document.getElementById('popup-modal');
+            const cancelLogoutButton = document.getElementById('cancelLogout');
 
-    logoutButton.addEventListener('click', () => {
-        logoutModal.classList.remove('hidden');
-    });
+            logoutButton.addEventListener('click', () => {
+                logoutModal.classList.remove('hidden');
+            });
 
-    cancelLogoutButton.addEventListener('click', () => {
-        logoutModal.classList.add('hidden');
-    });
+            cancelLogoutButton.addEventListener('click', () => {
+                logoutModal.classList.add('hidden');
+            });
 
-    // Zone Modals
-    const zoneElements = document.querySelectorAll('[data-modal-target]');
-    const cancelZoneButtons = document.querySelectorAll('.cancel-zona');
+            // Zone Modals
+            const zoneElements = document.querySelectorAll('[data-modal-target]');
+            const cancelZoneButtons = document.querySelectorAll('.cancel-zona');
 
-    zoneElements.forEach(element => {
-        element.addEventListener('click', () => {
-            const modalId = element.getAttribute('data-modal-target');
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('hidden');
-        });
-    });
+            zoneElements.forEach(element => {
+                element.addEventListener('click', () => {
+                    const modalId = element.getAttribute('data-modal-target');
+                    const modal = document.getElementById(modalId);
+                    modal.classList.remove('hidden');
+                });
+            });
 
-    cancelZoneButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modal = button.closest('[id^="modal-zona-"]');
-            modal.classList.add('hidden');
-        });
-    });
+            cancelZoneButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('[id^="modal-zona-"]');
+                    modal.classList.add('hidden');
+                });
+            });
 
-    // Close modals on outside click
-    window.addEventListener('click', (event) => {
-        if (event.target.id === 'popup-modal') {
-            logoutModal.classList.add('hidden');
-        }
+            // Close modals on outside click
+            window.addEventListener('click', (event) => {
+                if (event.target.id === 'popup-modal') {
+                    logoutModal.classList.add('hidden');
+                }
 
-        const zoneModals = document.querySelectorAll('[id^="modal-zona-"]');
-        zoneModals.forEach(modal => {
-            if (event.target === modal) {
-                modal.classList.add('hidden');
+                const zoneModals = document.querySelectorAll('[id^="modal-zona-"]');
+                zoneModals.forEach(modal => {
+                    if (event.target === modal) {
+                        modal.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Map coordinates update
+            const mapImage = document.getElementById('mapImage');
+            const areas = document.querySelectorAll('area');
+
+            function updateAreaCoords() {
+                const imgWidth = mapImage.naturalWidth;
+                const imgCurrentWidth = mapImage.offsetWidth;
+                const scale = imgCurrentWidth / imgWidth;
+
+                areas.forEach(area => {
+                    const originalCoords = area.dataset.originalCoords.split(',').map(Number);
+                    const scaledCoords = originalCoords.map(coord => Math.round(coord * scale));
+                    area.coords = scaledCoords.join(',');
+                });
             }
+
+            window.addEventListener('load', updateAreaCoords);
+            window.addEventListener('resize', updateAreaCoords);
         });
-    });
-
-    // Map coordinates update
-    const mapImage = document.getElementById('mapImage');
-    const areas = document.querySelectorAll('area');
-
-    function updateAreaCoords() {
-        const imgWidth = mapImage.naturalWidth;
-        const imgCurrentWidth = mapImage.offsetWidth;
-        const scale = imgCurrentWidth / imgWidth;
-
-        areas.forEach(area => {
-            const originalCoords = area.dataset.originalCoords.split(',').map(Number);
-            const scaledCoords = originalCoords.map(coord => Math.round(coord * scale));
-            area.coords = scaledCoords.join(',');
-        });
-    }
-
-    window.addEventListener('load', updateAreaCoords);
-    window.addEventListener('resize', updateAreaCoords);
-});
-</script>
+    </script>
 
 @endsection
